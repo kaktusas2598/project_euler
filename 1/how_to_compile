@@ -1,0 +1,4 @@
+Use g++ or gcc to compile C++ sources:
+
+g++ -o test.exe test.cpp
+gcc -o test.exe test.cpp -lstdc++
