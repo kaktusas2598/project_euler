@@ -14,7 +14,7 @@ int main(){
 			sum += i;
 		//Test prime
 		else{
-			for(int j=2;j<sqrt((float)i);j++){
+			for(int j=2;j<=sqrt((float)i);j++){
 				//If number n between 1 and sqrt(n) have any
 				//multiples it is prime
 				if(i % j == 0){
