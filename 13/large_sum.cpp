@@ -43,21 +43,20 @@ string large_sum(string &a,string &b){
 		max = b;
 		min = a;
 		if(a.length() == b.length())
-			res.resize(a.length()+1,'0');
+			res.resize(a.length()+2,'0');
 		else
 			res.resize(b.length(),'0');
 	}
 
-	//TODO: FINISH
-	//add min to max
-	string filler1,filler2;
+	/*string filler1,filler2;
 	filler1.resize(res.length()-max.length(),' ');
-	filler2.resize(res.length()-max.length(),' ');
+	filler2.resize(res.length()-min.length(),' ');
 	cout <<filler1<< max << endl;
-	cout <<filler2<<min << endl;
+	cout <<filler2<<min << endl;*/
 	int pos_min = min.length() - 1;
 	int pos_res = res.length() - 1;
 	for(int pos_max = max.length() - 1;pos_max >= 0;pos_max--){
+		if(pos_min >= 0){
 		//add two digits and carry
 		sum = (max[pos_max] - '0')+(min[pos_min] - '0') + carry;
 		//calculate next carry and current digit(remainder)
@@ -65,11 +64,19 @@ string large_sum(string &a,string &b){
 		mod = sum %10;
 		//Change current digit of result
 		res[pos_res] = mod + '0';
-		cout << res << endl;
+		//cout << res << endl;
 
-		if(pos_min == 0)
-			break;
 		pos_min--;
+		}
+		else{
+			sum = (max[pos_max] - '0')+ carry;
+			//calculate next carry and current digit(remainder)
+			carry = sum/10;
+			mod = sum %10;
+			//Change current digit of result
+			res[pos_res] = mod + '0';
+			//cout << res << endl;	
+		}
 		pos_res--;
 	}
 
